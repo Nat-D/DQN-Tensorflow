@@ -1,6 +1,6 @@
 # Implementation of DQN
 
-  This repository contain a minimal DQN code. 
+  This repository contains a minimal DQN code. 
 
 # Reference
   The code is based on implementations by 
