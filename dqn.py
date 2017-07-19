@@ -234,8 +234,18 @@ if __name__ == "__main__":
         sess.graph.finalize() # Finalise graph
 
         # Trian the model
-        learn(env, model, summary_writer)
-
+        learn(env,
+          model,
+          summary_writer,
+          batch_size=32,
+          max_timesteps = 100000000,
+          exploration_fraction=0.1,
+          exploration_final_eps=0.01,
+          train_freq=4,
+          learning_starts=10000,
+          target_network_update_freq=1000,
+          buffer_size=50000
+          )
         # close
         summary_writer.close()
         env.close()
