@@ -217,7 +217,7 @@ def learn(env,
 if __name__ == "__main__":
     with tf.Session() as sess:
         # Build environment
-        env = gym.make("PongNoFrameskip-v3")
+        env = gym.make("PongNoFrameskip-v4")
 
         # Pre-processing
         env = ScaledFloatFrame(wrap_dqn(env))
