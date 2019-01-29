@@ -194,6 +194,7 @@ def learn(env,
             summary.value.add(tag='global/episode_reward', simple_value=episode_reward)
             summary.value.add(tag='global/episode_shaped_reward', simple_value=episode_shaped_reward)
             summary.value.add(tag='global/episode_length', simple_value=episode_length)
+
             summary_writer.add_summary(summary, global_step=t)
             # reset episode_reward
             episode_reward = 0.0
@@ -223,7 +224,7 @@ if __name__ == "__main__":
         env = ScaledFloatFrame(wrap_dqn(env))
 
         # Summary writer
-        name = "Pong"
+        name = "Pong_5"
         summary_writer = tf.summary.FileWriter('experiments/' + name + '/')
 
         # Build model's graph

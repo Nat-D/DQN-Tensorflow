@@ -465,16 +465,18 @@ def make_atari(env_id, timelimit=True):
     env = MaxAndSkipEnv(env, skip=4)
     return env
 
-def wrap_dqn(env, episode_life=True, clip_rewards=True, frame_stack=True, scale=True):
+def wrap_dqn(env, episode_life=True, clip_rewards=False, frame_stack=True, scale=False):
     """Configure environment for DeepMind-style Atari.
     """
+
+    env = NoopResetEnv(env, noop_max=30)
+    env = MaxAndSkipEnv(env, skip=4)
+
     if episode_life:
         env = EpisodicLifeEnv(env)
     if 'FIRE' in env.unwrapped.get_action_meanings():
         env = FireResetEnv(env)
     env = WarpFrame(env)
-    if scale:
-        env = ScaledFloatFrame(env)
     if clip_rewards:
         env = ClipRewardEnv(env)
     if frame_stack:
